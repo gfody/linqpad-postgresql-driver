@@ -9,6 +9,8 @@ using System.Reflection;
 
 namespace DynamicLinqPadPostgreSqlDriver
 {
+   using NpgsqlInet = ValueTuple<IPAddress, int>;
+
    public static class SqlHelper
    {
       private static readonly IDictionary<string, string> SqlCache = new Dictionary<string, string>();

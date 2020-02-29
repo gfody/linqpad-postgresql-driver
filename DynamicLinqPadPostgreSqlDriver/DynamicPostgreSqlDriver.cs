@@ -11,6 +11,7 @@ using DynamicLinqPadPostgreSqlDriver.UI;
 using DynamicLinqPadPostgreSqlDriver.Shared.Extensions;
 using LinqToDB.DataProvider;
 using LinqToDB.DataProvider.PostgreSQL;
+using System;
 
 namespace DynamicLinqPadPostgreSqlDriver
 {
@@ -117,6 +118,7 @@ namespace DynamicLinqPadPostgreSqlDriver
          return explorerItems;
       }
 
+      [Obsolete]
       public override bool ShowConnectionDialog(IConnectionInfo cxInfo, bool isNewConnection)
       {
          return UIHelper.ShowConfigurationWindow(cxInfo);

@@ -7,8 +7,8 @@ using System.Reflection;
 using Dapper;
 using LINQPad.Extensibility.DataContext;
 using Moq;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.AutoMoq;
+using AutoFixture;
+using AutoFixture.AutoMoq;
 using Xunit;
 
 namespace DynamicLinqPadPostgreSqlDriver.Tests.DynamicAssemblyGeneration
@@ -106,7 +106,7 @@ namespace DynamicLinqPadPostgreSqlDriver.Tests.DynamicAssemblyGeneration
       private static IConnectionInfo CreateConnectionInfo()
       {
          var fixture = new Fixture();
-         fixture.Customize(new AutoConfiguredMoqCustomization());
+         fixture.Customize(new AutoMoqCustomization { ConfigureMembers = true });
          var cxInfo = fixture.Create<IConnectionInfo>();
          Mock.Get(cxInfo).Setup(x => x.DatabaseInfo).ReturnsUsingFixture(fixture);
          Mock.Get(cxInfo.DatabaseInfo).Setup(x => x.CustomCxString).Returns(DatabaseFixture.ConnectionString);
